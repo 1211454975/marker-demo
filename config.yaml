@@ -1,0 +1,50 @@
+deepseek:
+  api_key: "sk-b41a57dffc1941589d36e34b75d9d78d"  # 需要替换为有效密钥
+  timeout: 30
+
+temp:
+  dir: "temp"
+  retention_days: 1
+logging:
+  level: INFO
+  max_size: 10485760 # 10MB
+
+marker:  # 保持配置项名称统一
+  model_dir: "models"
+  device: "cpu"  # 显式指定计算设备
+  max_pages: 50       # 最大解析页数
+  langs: ["chi_sim", "eng"] 
+  table_format: "markdown"
+  # 移除重复参数
+  langs: ["zh", "en"]  # 支持中文和英文
+  ocr: 
+    enabled: true      # 启用OCR支持
+    engine: "paddle"    # 使用百度飞桨引擎
+  table:
+    format: "markdown" # 表格输出格式
+    max_columns: 6     # 最大支持列数
+  equation:
+    export_format: "latex"  # 公式转LaTeX格式
+  debug: false         # 调试模式开关
+
+video:
+  output_dir: "./output"
+  resolution: 1920x1080
+  fps: 24
+  watermark: "AI Generated"
+
+tts:
+  output_dir: "output/audio"
+  rate: 160  # 推荐教学语速
+  voice: "HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Speech/Voices/Tokens/TTS_MS_ZH-CN_HUIHUI_11.0"  # 中文语音
+
+web:
+  host: 0.0.0.0
+  port: 5000
+  debug: false
+  upload_dir: "uploads"  # 新增上传目录配置
+
+pdf_parser:
+  metadata:
+    max_authors: 5
+    keyword_pattern: "(关键词|keywords)[:：]"
